@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2014 at 10:08 PM
+-- Generation Time: Apr 04, 2014 at 10:32 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -44,12 +44,12 @@ CREATE TABLE IF NOT EXISTS `keytable` (
 CREATE TABLE IF NOT EXISTS `users` (
   `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(30) NOT NULL DEFAULT 'John Doe',
-  `Password` varchar(20) NOT NULL,
+  `Password` varchar(255) NOT NULL,
   `First Name` varchar(30) NOT NULL,
   `Last Name` varchar(30) NOT NULL,
   `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`UserId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
