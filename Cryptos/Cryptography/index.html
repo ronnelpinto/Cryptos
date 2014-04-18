@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>Simply Do - Cryptography Project</title>
+  <link rel="stylesheet" href="css/default.css"/>
+
+</head>
+<body>
+
+  <div class="navbar navbar-fixed-top" ng-controller="navigationCtrl">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav" >
+          
+          <li ng-class="{active: location.path() == '/aes'}">
+            <a href="#/aes">Encrypt and Decrypt using AES</a>
+          </li>
+
+          <li ng-class="{active: location.path() == '/des'}">
+            <a href="#/des">Encrypt and Decrypt using DES</a>
+          </li>
+          
+          
+          <li ng-class="{active: location.path() == '/phrases'}">
+            <a href="#/phrases">Key Maker</a>
+          </li>
+          <li ng-class="{active: location.path() == '/about'}">
+            <a href="#/about">About</a>
+          </li>
+          
+        </ul>
+  
+      </div>
+    </div>
+  </div>
+
+  
+  <div ng-view></div>
+
+
+  
+  <script src="lib/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="lib/CryptoJS/rollups/aes.js"></script>
+  <script src="lib/CryptoJS/rollups/tripledes.js"></script>
+
+
+
+</body>
+</html>

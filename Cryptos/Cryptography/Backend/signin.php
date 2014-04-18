@@ -3,9 +3,11 @@ require'connect.php';
 $username=$_POST["username"];
 $password=(md5($_POST["password"]));
 //$userid=$_REQUEST['n'];
-$algoid=$_REQUEST["algoid"];
+//$algoid=$_REQUEST["algoid"];
+
 $algoname=$_REQUEST["algoname"];
 $keytext=$_REQUEST["key"];
+echo $algoname,$algoid,$userid,$keytext;
 $query = "SELECT UserId FROM users WHERE  username='{$username}' and password='{$password}'";
 
                    if($query_run=mysql_query($query))
@@ -26,7 +28,7 @@ $query = "SELECT UserId FROM users WHERE  username='{$username}' and password='{
 							//	echo'welcome'.$name;
 							
 							//  again give the link of the page to go to
-							header('Location:setkey.php?n='.$UserId.'&algoid='.$algoid.'&algoname='.$algoname.'&keytext='.$keytext);
+							header('Location:http://localhost/Cryptos/Cryptography/#/des?n='.$UserId);
 					}
 				  }
                   else
