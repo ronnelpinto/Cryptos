@@ -1,0 +1,44 @@
+<div id="top" class="keymaker">
+  <div class="container">
+    <div class="row">
+      <div class="span7">
+        <h1>Need a key?</h1>
+        <p>Generate random phrases.</p>
+      </div> 
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="span12">
+      <h2>Your random key:</h2>
+    </div>
+    
+    <div class="span8">
+      <textarea id="passPhrase" ng-model="words" class="large"></textarea>
+	  <!--<textarea class="input-xlarge" id="passphrasekey" ng-model="passphraseKey" placeholder=""></textarea>-->
+    </div>
+     <form name="input" action="http://localhost/Cryptos/Cryptography/#/des?n={{UserId}}" method="get">
+	       <input type="submit" value="Go back to DES">
+     </form>
+    <div class="span3">
+      <form ng-submit="getRandomWords()" class="form">
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i> Generate a new key</button>
+          </div>
+        </div>
+		<button type="submit" ng-click="passkey()" class="btn btn-primary" ng-disabled="passPhrase == ''">Store key in database<i class="icon-arrow-right icon-white"></i></button>
+        <div class="control-group">
+          <label class="control-label" for="wordCount">Number of words</label>
+          <div class="controls">
+            <input type="text" class="input-xlarge span1" id="wordCount" ng-model="wordCount" placeholder="" />
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

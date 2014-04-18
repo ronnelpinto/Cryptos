@@ -1,0 +1,66 @@
+<div id="top">
+  <div class="container">
+    <div class="row">
+      <div class="span7">
+        <h1>Like privacy?</h1>
+      </div>
+      <div class="span5">
+        <p>Encrypt any text right in your browser</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+
+    
+    <div class="span12">
+      <p class="status {{status}}" ng-show="feedBack != ''">{{feedBack}}</p>
+    </div>
+    
+    <div class="span12">
+      <h2>Enter a custom key or <a ng-click="newPassPhrase();">generate random key</a></h2>
+      <textarea class="input-xlarge" id="passPhrase" ng-model="passphrase" placeholder=""></textarea>
+      <p class="note">The key is used to encrypt a text into a cypher and vice versa. Longer keys are better. See also: <a href="#/phrases">Key Maker</a></p>
+    </div>
+
+    
+
+
+    <div class="span6">
+      <form ng-submit="encryptUsingAes()" class="form plain">
+        <h2>Plain Text</h2>
+        <div class="control-group">
+          <div class="controls">
+            <textarea id="messageInput" ng-model="message" placeholder=""></textarea>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-primary" ng-disabled="message == ''">Encrypt text Using Aes<i class="icon-arrow-right icon-white"></i></button>
+            <a href="/Cryptos/Backend/signin.html">Sign in to Upload the key to encrypt<br></a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="span6">
+      <form ng-submit="decryptUsingAes()" class="form cypher">
+        <h2>Cypher</h2>
+        <div class="control-group">
+          <div class="controls">
+            <textarea id="cypher" ng-model="cypher" placeholder=""></textarea>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button  type="submit" class="btn btn-primary" ng-disabled="cypherText == ''"><i class="icon-arrow-left icon-white"></i> Decrypt cypher Using Aes</button>
+            <a href="/Cryptos/Backend/signin.html">Sign in to get the Key to decrypt<br></a>
+            
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
