@@ -1,0 +1,22 @@
+the code works fine
+
+how to go about now:
+
+i have set everything by passing values using a http Get request and so whatever values go thru the url are critical for the working of the code
+
+when u first login n if u hav not set the key, then click "generate key", then in in "phrases.html" , after saving in db, use the BUTTON only to go back.
+
+now in "des", once key is set, then use "fetch key frm db button" to get the key, n then use "setkey" to set that key to encrypt and decrypt.
+
+C THE URL WHILE DOING ALL THIS, U CAN C HOW THE VALUES R BEING PASSED
+
+
+Now the stuff u have to do n give to me latest by TOMM MORNING ARE:
+
+prevent multiple db entries handling, one user only one key, else throw error.
+implementing similarly for AES
+testing the login and authentication features. the validation has some flaws, it accepts even if "confirm password" is wrong in "signup"
+VERY IMPORTANT:trying to pass parameters using routes feature in app.js, Something i got pissed doing, else u mus remove the tabs, as if we click the tabs then it will take the default route and we cannot pass values like userid.
+
+
+Do finish quickly and forward the code back to me. The first db concsistency is very important as well as the routing issues.
