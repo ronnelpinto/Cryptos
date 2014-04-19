@@ -26,9 +26,9 @@
     </div>
     
     <div class="span12">
-      <h2>Enter a custom key or <a ng-click="newPassPhrase();">generate random key</a></h2>
+      <h2>Key</h2>
       <textarea class="input-xlarge" id="passphrasekey" ng-model="passphraseKey" placeholder=""ng-show="passphraseKey != ''">{{passphraseKey}}</textarea>
-      <p class="note">The key is used to encrypt a text into a cypher and vice versa. Longer keys are better. See also: <a href="#/phrases">Key Maker</a></p>
+  
 	  <button type="submit" ng-click="getkey()" class="btn btn-primary" >Set key<i class="icon-arrow-right icon-white"></i></button>
     </div>
 

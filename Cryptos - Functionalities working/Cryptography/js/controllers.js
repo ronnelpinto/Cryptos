@@ -3,7 +3,7 @@
 /* Controllers */
 
 
-function AESCtrl($scope,WordService,$http,$location) 
+function AESCtrl($scope,WordService,$http,$location,$window) 
 {
 
   var passPhraseWordCount = 5;
@@ -15,11 +15,19 @@ function AESCtrl($scope,WordService,$http,$location)
   $scope.feedBackOfEncryption = '';
   $scope.status = '';
   $scope.keyvalue='';
+  
   $scope.getkey = function()
   {
     $scope.passphraseKey=$location.search().key;
+    if($scope.passphraseKey==undefined)
+    { 
+      $window.alert('Fetch the key first');
+    }
+    else
+    {
+      $window.alert('Key successfully fetched ');
+    }
   }
-   
    
   $scope.encryptUsingAes = function () 
   {
@@ -146,7 +154,7 @@ function homeCtrl(WordService) {
 
 }
 
-function phrasesCtrl($scope,WordService,$location,$http)
+function phrasesCtrl($scope,WordService,$location,$http,$window)
  {
 
   $scope.wordCount = 4;
@@ -169,11 +177,18 @@ function phrasesCtrl($scope,WordService,$location,$http)
                     }).success(function(data, status, headers, config) 
                     {
                         $scope.data = data;
-                        console.log(status + ' - ' + data);
+                        if(status==200)
+                        {
+                          $window.alert('Successfully stored key in database');
+                        }
+                        else
+                        {
+                          $window.alert('Duplicate keys not allowed for One Algorithm');
+                        }
                     }).error(function(data, status)
                     {  
                         $scope.status = status;
-                        console.log(status + ' - ' + data);
+                        $window.alert('Error in uploading key');
                     });
    }
    
@@ -193,7 +208,7 @@ function phrasesCtrl($scope,WordService,$location,$http)
 }
 
 
-function DESCtrl($scope,WordService,$http,$location) 
+function DESCtrl($scope,WordService,$http,$location,$window) 
 {
 
   var passPhraseWordCount = 5;
@@ -208,6 +223,14 @@ function DESCtrl($scope,WordService,$http,$location)
   $scope.getkey = function()
   {
     $scope.passphraseKey=$location.search().key;
+    if($scope.passphraseKey==undefined)
+    { 
+      $window.alert('Fetch the key first');
+    }
+    else
+    {
+      $window.alert('Key successfully fetched ');
+    }
   }
    
    

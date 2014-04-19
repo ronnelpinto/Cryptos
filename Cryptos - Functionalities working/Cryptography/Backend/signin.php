@@ -14,7 +14,12 @@ $query = "SELECT UserId FROM users WHERE  username='{$username}' and password='{
                   {
 						if(mysql_num_rows($query_run)==0)
 					{
-						echo"<h1>Enter valid username and password</h1>";
+						$msg='Enter valid username and password';
+						
+						echo '<script type="text/javascript">alert("' . $msg . '"); </script>';
+						
+						header('Location:http://localhost/Crypto/#/signin');
+						
 					}
 					else
 					{
@@ -22,13 +27,13 @@ $query = "SELECT UserId FROM users WHERE  username='{$username}' and password='{
                         {
                               $UserId=$query_row['UserId'];
                             echo $UserId;
-							//	echo'welcome'.$username;
-							//	header('Location:shopkeeper_openning.php?n='.$shopId);
-                        }
-							//	echo'welcome'.$name;
 							
-							//  again give the link of the page to go to
+                        }
+							$msg='Sign In Successful';
+							
+							echo '<script type="text/javascript">alert("' . $msg . '"); </script>';
 							header('Location:http://localhost/Crypto/#/aes?n='.$UserId);
+							
 					}
 				  }
                   else
