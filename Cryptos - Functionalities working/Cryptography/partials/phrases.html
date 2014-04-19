@@ -20,9 +20,14 @@
       <textarea id="passPhrase" ng-model="words" class="large"></textarea>
 	  <!--<textarea class="input-xlarge" id="passphrasekey" ng-model="passphraseKey" placeholder=""></textarea>-->
     </div>
-     <form name="input" action="http://localhost/Cryptos/Cryptography/#/des?n={{UserId}}" method="get">
-	       <input type="submit" value="Go back to DES">
+     <form name="input" action="http://localhost/Crypto/#/aes?n={{UserId}}" method="get">
+	       <input type="submit" value="Go back to AES">
      </form>
+     </br>
+     <form name="input" action="http://localhost/Crypto/#/des?n={{UserId}}" method="get">
+         <input type="submit" value="Go back to DES">
+     </form>
+
     <div class="span3">
       <form ng-submit="getRandomWords()" class="form">
         <div class="control-group">

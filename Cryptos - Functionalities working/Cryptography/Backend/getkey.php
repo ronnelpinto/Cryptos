@@ -17,10 +17,15 @@ $query = "SELECT  KeyText FROM keytable WHERE  userid='{$userid}' and algoid='{$
                         {
                             $Key=$query_row['KeyText'];
                             echo $Key;
-							}
-						header('Location:http://localhost/Cryptos/Cryptography/#/des?n='.$userid.'&key='.$Key);
-							//give the approprite location to go to 
-							//header('Location:);
+						}
+						if($algoname == 'DES')
+						{
+							header('Location:http://localhost/Crypto/#/des?n='.$userid.'&key='.$Key);
+						}
+						else
+						{
+							header('Location:http://localhost/Crypto/#/aes?n='.$userid.'&key='.$Key);
+						}
 					}
 				  }
                   else

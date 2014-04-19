@@ -13,9 +13,12 @@
 <div class="container">
   <div class="row">
 
-    <?php $id=$_GET['n']; echo $id; ?>
+    <?php 
+      $id=$_GET['n']; 
+      echo $id; 
+    ?>
     <div class="span12">
-      <p class="Status {{desStatus}}" ng-show="feedBackOfEncryption != ''">{{feedBackOfEncryption}}</p>
+      <p class="Status {{status}}" ng-show="feedBackOfEncryption != ''">{{feedBackOfEncryption}}</p>
     </div>
     
     <div class="span12">

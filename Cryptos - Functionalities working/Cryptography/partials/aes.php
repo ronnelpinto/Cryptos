@@ -13,11 +13,11 @@
 <div class="container">
   <div class="row">
   
-    <form name="input" action="http://localhost/Crypto/#/phrases?algoid=2&algoname=DES&n={{UserId}}" method="get">
+    <form name="input" action="http://localhost/Crypto/#/phrases?algoid=1&algoname=AES&n={{UserId}}" method="get">
 	       <input type="submit" value="Generate a new key">
      </form>
 	 
-	 <form name="input2" action="http://localhost/Crypto/Backend/getkey.php?algoid=2&algoname=DES&n={{UserId}}" method="post">
+	 <form name="input2" action="http://localhost/Crypto/Backend/getkey.php?algoid=1&algoname=AES&n={{UserId}}" method="post">
 	       <input type="submit" value="Fetch key from database">
      </form>
   
@@ -45,7 +45,7 @@
         </div>
         <div class="control-group">
           <div class="controls">
-            <button type="submit" ng-click="encryptUsingDes()" class="btn btn-primary" ng-disabled="messageInput == ''">Encrypt text Using Des<i class="icon-arrow-right icon-white"></i></button>
+            <button type="submit" ng-click="encryptUsingAes()" class="btn btn-primary" ng-disabled="messageInput == ''">Encrypt text Using Aes<i class="icon-arrow-right icon-white"></i></button>
           </div>
           
         </div>
@@ -62,7 +62,7 @@
         </div>
         <div class="control-group">
           <div class="controls">
-            <button  type="submit" ng-click="decryptUsingDes()" class="btn btn-primary" ng-disabled="cypherText == ''"><i class="icon-arrow-left icon-white"></i> Decrypt cypher Using Des</button>
+            <button  type="submit" ng-click="decryptUsingAes()" class="btn btn-primary" ng-disabled="cypherText == ''"><i class="icon-arrow-left icon-white"></i> Decrypt cypher Using Aes</button>
             
           </div>
         </div>

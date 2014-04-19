@@ -3,41 +3,52 @@
 /* Controllers */
 
 
-function AESCtrl($scope,WordService) 
+function AESCtrl($scope,WordService,$http,$location) 
 {
 
   var passPhraseWordCount = 5;
-
-  $scope.message = '';
-  $scope.cypher = '';
-  $scope.cypherString = '';
-  $scope.passphrase = '';
-  $scope.feedBack = '';
+  $scope.UserId=$location.search().n;
+  $scope.messageInput = '';
+  $scope.cypherText = '';
+  $scope.cypherStringOfDes = '';
+  $scope.passphraseKey = '';
+  $scope.feedBackOfEncryption = '';
   $scope.status = '';
-
-
-
+  $scope.keyvalue='';
+  $scope.getkey = function()
+  {
+    $scope.passphraseKey=$location.search().key;
+  }
+   
+   
   $scope.encryptUsingAes = function () 
   {
 
-    if ($scope.message != '' && $scope.passphrase != '' )
+    if ($scope.messageInput != '' && $scope.passphraseKey != '' )
      {
 
-      $scope.cypher = CryptoJS.AES.encrypt($scope.message, $scope.passphrase);
+      $scope.cypherText = CryptoJS.AES.encrypt($scope.messageInput, $scope.passphraseKey);
 
-      $scope.cypherString = String($scope.cypher);
+      $scope.cypherStringOfDes = String($scope.cypherText);
 
-      $scope.message = '';
 
-      $scope.feedBack = 'The text was successfully encrypted.';
+      $scope.feedBackOfEncryption = 'The text was successfully encrypted.';
+  
+
+      $scope.messageInput = '';
+
+      $scope.passphraseKey='';
 
       $scope.status = 'success';
+
+    
+      
 
     } 
     else 
     {
 
-      $scope.feedBack = 'You need to enter or generate a key phrase to encrypt text.';
+      $scope.feedBackOfEncryption = 'You need to enter or generate a key phrase to encrypt text.';
 
       $scope.status = 'error';
 
@@ -50,10 +61,10 @@ function AESCtrl($scope,WordService)
   {
 
     
-    if ($scope.cypher == '' | $scope.passphrase == '' )
+    if ($scope.cypherText == '' | $scope.passphraseKey == '' )
      {
 
-      $scope.feedBack = 'You need to enter your key phrase to decrypt this cypher.';
+      $scope.feedBackOfEncryption = 'You need to enter your key phrase to decrypt this cypher.';
 
       $scope.status = 'error';
 
@@ -61,22 +72,22 @@ function AESCtrl($scope,WordService)
     else 
     {
 
-      $scope.message = CryptoJS.AES.decrypt($scope.cypher, $scope.passphrase).toString(CryptoJS.enc.Utf8);
+      $scope.messageInput = CryptoJS.AES.decrypt($scope.cypherText, $scope.passphraseKey).toString(CryptoJS.enc.Utf8);
 
-      if ($scope.message == '')
+      if ($scope.messageInput == '')
        {
 
-        $scope.feedBack = 'Cypher and key phrase do not match';
+        $scope.feedBackOfEncryption = 'Cypher and key phrase do not match';
 
         $scope.status = 'error';
 
       } else {
 
-        $scope.cypherString = '';
+        $scope.cypherStringOfDes = '';
 
-        $scope.cypher = '';
+        $scope.cypherText = '';
 
-        $scope.feedBack = 'The cypher was successfully decrypted.';
+        $scope.feedBackOfEncryption = 'The cypher was successfully decrypted by AES';
 
         $scope.status = 'success';
 
@@ -86,20 +97,22 @@ function AESCtrl($scope,WordService)
 
   }
 
+
   $scope.newPassPhrase = function ()
    {
 
-    $scope.passphrase = WordService.getWords(passPhraseWordCount);
+    $scope.passphraseKey = WordService.getWords(passPhraseWordCount);
     
   }
 
-  $scope.clear = function () {
+  $scope.clear = function ()
+  {
 
-    $scope.message = '';
-    $scope.cypher = '';
-    $scope.cypherString = '';
-    $scope.passphrase = '';
-    $scope.feedBack = '';
+    $scope.messageText = '';
+    $scope.cypherText = '';
+    $scope.cypherStringOfDes = '';
+    $scope.passphraseKey = '';
+    $scope.feedBackOfEncryption = '';
     $scope.status = '';
     
   }
@@ -115,6 +128,7 @@ function navigationCtrl($scope, $location)
 
   //required to high light the active navigational point
   $scope.location = $location;
+  $scope.UserId=$location.search().n;
 
 }
 
@@ -151,7 +165,7 @@ function phrasesCtrl($scope,WordService,$location,$http)
    $scope.passkey = function()
    {
    
-    $http.get('http://localhost/Cryptos/Cryptography/Backend/setkey.php',{params: {'n':$scope.UserId,'algoid':$scope.AlgoId,'algoname':$scope.Algoname,'key':$scope.words}
+    $http.get('http://localhost/Crypto/Backend/setkey.php',{params: {'n':$scope.UserId,'algoid':$scope.AlgoId,'algoname':$scope.Algoname,'key':$scope.words}
                     }).success(function(data, status, headers, config) 
                     {
                         $scope.data = data;
@@ -183,10 +197,7 @@ function DESCtrl($scope,WordService,$http,$location)
 {
 
   var passPhraseWordCount = 5;
-//$location.search() = {{$location.search('n')}}
   $scope.UserId=$location.search().n;
-  //$scope.AlgoId='2';
-  //$scope.Algoname='DES';
   $scope.messageInput = '';
   $scope.cypherText = '';
   $scope.cypherStringOfDes = '';
@@ -194,24 +205,10 @@ function DESCtrl($scope,WordService,$http,$location)
   $scope.feedBackOfEncryption = '';
   $scope.status = '';
   $scope.keyvalue='';
-   $scope.getkey = function()
-   {
-  $scope.passphraseKey=$location.search().key;
+  $scope.getkey = function()
+  {
+    $scope.passphraseKey=$location.search().key;
   }
-   /*$scope.getkey = function()
-   {
-   
-   $http.get('http://localhost/Cryptos/Cryptography/Backend/getkey.php',{params: {'n':$scope.UserId,'algoid':$scope.AlgoId,'algoname':$scope.Algoname}
-                    }).success(function(data, status, headers, config) 
-                    {
-                        $scope.keyvalue = $location.search().key;
-                        console.log(status + ' - ' + data);
-                    }).error(function(data, status)
-                    {  
-                        $scope.status = status;
-                        console.log(status + ' - ' + data);
-                    });
-   }*/
    
    
   $scope.encryptUsingDes = function () 
@@ -226,22 +223,6 @@ function DESCtrl($scope,WordService,$http,$location)
 
 
       $scope.feedBackOfEncryption = 'The text was successfully encrypted.';
-
-           
-     
-      
-      //header('Location:/Cryptos/Backend/setkey.php?n='.$UserId.'&algoid='.$algoid.'&algoname='.$algoname.'&key='.$keytext);
-      
-      /*
-      $http({method: 'GET', url: 'http://localhost/Cryptos/Backend/setkey.php?'+'n='+$scope.UserId}).
-              success(function(data, status, headers, config) {
-                    console.log(status + ' - ' + data);
-                }).
-               error(function(data, status, headers, config) {
-                    console.log(status + ' - ' + data);
-                });
-      */
-      
   
 
       $scope.messageInput = '';

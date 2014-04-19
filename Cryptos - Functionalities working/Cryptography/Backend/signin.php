@@ -28,7 +28,7 @@ $query = "SELECT UserId FROM users WHERE  username='{$username}' and password='{
 							//	echo'welcome'.$name;
 							
 							//  again give the link of the page to go to
-							header('Location:http://localhost/Cryptos/Cryptography/#/des?n='.$UserId);
+							header('Location:http://localhost/Crypto/#/aes?n='.$UserId);
 					}
 				  }
                   else

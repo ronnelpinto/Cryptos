@@ -15,11 +15,11 @@
                         while($query_row1=mysql_fetch_assoc($query_run1))
                         {
                               $UserId=$query_row1['UserId'];
-							  echo $UserId;
+							             echo $UserId;
                               
                         }
 						// here give the link of the page to go to - in our case the home page 
-					header('Location:http://localhost/Cryptos/Cryptography/#/des?n='.$UserId);
+					         header('Location:http://localhost/Crypto/#/aes?n='.$UserId);
                   }
                   else
                   {

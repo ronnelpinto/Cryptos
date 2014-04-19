@@ -13,20 +13,16 @@
       <div class="container">
         <ul class="nav" >
           
-          <li ng-class="{active: location.path() == '/aes'}">
-            <a href="#/aes">Encrypt and Decrypt using AES</a>
+          <li ng-class="{active: location.path() == '/aes'}" >
+            <a href="#/aes?n={{UserId}}">Encrypt and Decrypt using AES</a>
           </li>
 
           <li ng-class="{active: location.path() == '/des'}">
-            <a href="#/des">Encrypt and Decrypt using DES</a>
+            <a href="#/des?n={{UserId}}">Encrypt and Decrypt using DES</a>
           </li>
-          
-          
-          <li ng-class="{active: location.path() == '/phrases'}">
-            <a href="#/phrases">Key Maker</a>
-          </li>
+      
           <li ng-class="{active: location.path() == '/about'}">
-            <a href="#/about">About</a>
+            <a href="#/about?n={{UserId}}">About</a>
           </li>
           
         </ul>
